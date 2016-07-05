@@ -52,9 +52,9 @@ class WP8Agent implements ITargetPlatform {
     }
 
     public downloadBuild(buildInfo: BuildInfo, req: Express.Request, res: Express.Response, callback: (err: any) => void): void {
-        var wp8OutputDir: string = path.join(buildInfo.appDir, "platforms", "wp8", "Bin", "device");
-        var pathToManifestFile: string = path.join(wp8OutputDir, buildInfo["appName"] + ".xaml");
-        var pathToPackageFile: string = path.join(wp8OutputDir, buildInfo["appName"] + ".xap");
+        var wp8OutputDir: string = path.join(buildInfo.appDir, "platforms", "wp8", "Bin", buildInfo.configuration);
+        var pathToManifestFile: string = path.join(wp8OutputDir, "AppManifest.xaml");
+        var pathToPackageFile: string = path.join(wp8OutputDir, "CordovaAppProj_" + buildInfo.configuration + "_AnyCPU.xap");
         var pathToBuildZipFile: string = path.join(wp8OutputDir, buildInfo["appName"] + ".zip");
 
         if (!fs.existsSync(pathToManifestFile) || !fs.existsSync(pathToPackageFile)) {
@@ -79,7 +79,7 @@ class WP8Agent implements ITargetPlatform {
                 });
 
                 archive.pipe(outputStream);
-                archive.file(pathToManifestFile, { name: buildInfo["appName"] + ".xaml" });
+                archive.file(pathToManifestFile, { name: "AppManifest.xaml" });
                 archive.file(pathToPackageFile, { name: buildInfo["appName"] + ".xap" });
                 archive.finalize();
 
