@@ -56,7 +56,7 @@ class Builder {
         var self: Builder = this;
 
         return Q.fcall(Builder.change_directory, self.currentBuild.appDir)
-            .then(function (): Q.Promise<any> { return self.update_plugins(); })
+            //.then(function (): Q.Promise<any> { return self.update_plugins(); })
             .then(function (): void { self.currentBuild.updateStatus(BuildInfo.BUILDING, "UpdatingPlatform", self.currentBuild.buildPlatform); process.send(self.currentBuild); })
             .then(function (): Q.Promise<any> { return self.beforePrepare(); })
             .then(function (): Q.Promise<any> { return self.addPlatform(); })

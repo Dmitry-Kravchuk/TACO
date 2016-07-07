@@ -368,8 +368,7 @@ class RemoteBuildClientHelper {
         var appRelPath: string = path.relative(settings.projectSourceDir, reader.path);
 
         var exclusions: string[] = [
-            "remote", // the /remote folder is for local tracking of remote builds, no need to send it to the remote server
-            "platforms" // The /platforms folder is for locally installed platforms, and thus irrelevant to remote builds
+            "remote" // the /remote folder is for local tracking of remote builds, no need to send it to the remote server
         ];
 
         if (exclusions.indexOf(appRelPath) !== -1) {
