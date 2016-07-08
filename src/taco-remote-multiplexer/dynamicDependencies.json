@@ -1,8 +1,7 @@
 ﻿{
   "latestTacoRemoteLib": {
     "packageName": "taco-remote-lib",
-    "packageId": "taco-remote-lib@2.2.0",
-    "dev": true
+    "packageId": "taco-remote-lib@2.3.0"
   },
   "preCordova540TacoRemoteLib": {
     "packageName": "taco-remote-lib",
