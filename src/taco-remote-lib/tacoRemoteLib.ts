@@ -15,6 +15,7 @@ import path = require ("path");
 
 import IOSAgent = require ("./ios/ios");
 import WP8Agent = require ("./wp8/wp8");
+import WindowsAgent = require ("./windows/windows");
 import utils = require ("taco-utils");
 import BuildInfo = utils.BuildInfo;
 import ProcessLogger = utils.ProcessLogger;
@@ -45,6 +46,7 @@ module TacoRemoteLib {
 
             platforms = [];
             platforms.push(new IOSAgent(config));
+            platforms.push(new WindowsAgent(config));
             platforms.push(new WP8Agent(config));
             initialized = true;
         }
